@@ -1,0 +1,30 @@
+//Login
+#loginLayout{
+    -fx-background-color:#333;
+}
+#loginLayout TextField,
+#loginLayout PasswordField{
+    -fx-background-radius:10px;
+}
+
+//MainMenu
+#slideRight{
+    -fx-background-color:#333;
+}
+#slideRight Button{
+    -fx-background-radius:50px;
+}
+
+#statistic{
+    -fx-background-color:rgba(0,255,204,0.4);
+}
+#statistic TextField{
+    -fx-text-fill:red;
+}
+
+#Meals{
+    -fx-background-color:#F9E0D3;
+}
+#Drinks{
+    -fx-background-color:#f9fbd3;
+}
