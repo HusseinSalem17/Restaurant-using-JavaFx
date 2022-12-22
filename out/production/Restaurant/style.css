@@ -1,6 +1,9 @@
 //Login
 #loginLayout{
-    -fx-background-color:#333;
+-fx-background-position: center;
+-fx-background-image: url(back.jpg);
+
+
 }
 #loginLayout TextField,
 #loginLayout PasswordField{
@@ -23,8 +26,10 @@
 }
 
 #Meals{
-    -fx-background-color:#F9E0D3;
+-fx-background-position: center;
+-fx-background-image: url(MealsBack.jpg);
 }
 #Drinks{
-    -fx-background-color:#f9fbd3;
+-fx-background-position: center;
+-fx-background-image: url(DrinksBack.jpg);
 }

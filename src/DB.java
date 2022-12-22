@@ -1,5 +1,6 @@
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 
 import javax.swing.*;
 import java.sql.Connection;
@@ -15,7 +16,11 @@ public class DB {
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
             con = DriverManager.getConnection("jdbc:ucanaccess://Restaurant.accdb");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Not Connect");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Sign Up");
+            alert.setHeaderText("Error");
+            alert.setContentText("Not Connect");
+            alert.showAndWait();
         }
         return con;
     }
@@ -63,9 +68,17 @@ public class DB {
 
         } catch (Exception e) {
             if (table.equals("Drinks")) {
-                JOptionPane.showMessageDialog(null, "رقم المشروب او اسم المشروب موجود مسبقا");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Sign Up");
+                alert.setHeaderText("Error");
+                alert.setContentText("رقم المشروب او اسم المشروب موجود مسبقا");
+                alert.showAndWait();
             } else {
-                JOptionPane.showMessageDialog(null, "رقم الوجبة او اسم الوجبة موجود مسبقا");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Sign Up");
+                alert.setHeaderText("Error");
+                alert.setContentText("رقم الوجبة او اسم الوجبة موجود مسبقا");
+                alert.showAndWait();
             }
 
         } finally {
@@ -144,9 +157,17 @@ public class DB {
         } catch (Exception e) {
             //because if i entered name exist in the table ( name is unique )
             if (table.equals("Drinks")) {
-                JOptionPane.showMessageDialog(null, "رقم المشروب او اسم المشروب موجود مسبقا");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Sign Up");
+                alert.setHeaderText("Error");
+                alert.setContentText("رقم المشروب او اسم المشروب موجود مسبقا");
+                alert.showAndWait();
             } else {
-                JOptionPane.showMessageDialog(null, "رقم الوجبة او اسم الوجبة موجود مسبقا");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Sign Up");
+                alert.setHeaderText("Error");
+                alert.setContentText("رقم المشروب او اسم المشروب موجود مسبقا");
+                alert.showAndWait();
             }
         } finally {
             try {
@@ -169,7 +190,11 @@ public class DB {
             return !ps.execute();
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "لم تنجح عملية الحذف...");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Sign Up");
+            alert.setHeaderText("Error");
+            alert.setContentText("لم تنجح عملية الحذف...");
+            alert.showAndWait();
         } finally {
             try {
                 con.close();

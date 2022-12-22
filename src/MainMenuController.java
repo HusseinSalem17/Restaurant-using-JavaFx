@@ -1,3 +1,14 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
@@ -11,7 +22,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Screen;
@@ -19,9 +29,15 @@ import javafx.stage.Stage;
 
 import javax.swing.*;
 import java.net.URL;
-import java.sql.Connection;
 import java.util.ResourceBundle;
 
+import javafx.scene.control.cell.PropertyValueFactory;
+
+/**
+ * FXML Controller class
+ *
+ * @author Kareem_Muhamed
+ */
 public class MainMenuController implements Initializable {
 
     @FXML
@@ -32,7 +48,7 @@ public class MainMenuController implements Initializable {
     Pane Drinks;
     @FXML
     Pane Meals;
-    //Meals table
+    //Meals table ID
     @FXML
     TextField numM;
     @FXML
@@ -54,7 +70,7 @@ public class MainMenuController implements Initializable {
     TableColumn<Meals, String> typeCM;
     @FXML
     TableColumn<Meals, Integer> costCM;
-    //Drinks table
+    //Drinks table ID
     @FXML
     TextField numD;
     @FXML
@@ -94,7 +110,7 @@ public class MainMenuController implements Initializable {
         ((Button) e.getSource()).setScaleX(1.1);
         ((Button) e.getSource()).setScaleY(1.1);
 
-        if (((Button) e.getSource()).getText().equals("تسجيل الخروج")) {
+        if (((Button) e.getSource()).getText().equals("Logout")) {
             ((Button) e.getSource()).setTextFill(Color.RED);
         } else {
             ((Button) e.getSource()).setTextFill(Color.BLUE);
@@ -106,7 +122,7 @@ public class MainMenuController implements Initializable {
         ((Button) e.getSource()).setScaleX(1);
         ((Button) e.getSource()).setScaleY(1);
 
-        if (((Button) e.getSource()).getText().equals("تسجيل الخروج")) {
+        if (((Button) e.getSource()).getText().equals("Logout")) {
             ((Button) e.getSource()).setTextFill(Color.RED);
         } else {
             ((Button) e.getSource()).setTextFill(Color.BLACK);
@@ -139,12 +155,17 @@ public class MainMenuController implements Initializable {
                 //to show the new Meal that i just added from ObservableList
                 listM.add(new Meals(num, name, type, cost));
 
-                doneM.setText("تمت عملية الاضافة");
+                doneM.setText("Successfully added");
                 doneM.setVisible(true);
                 numMeals.setText(Integer.parseInt(numMeals.getText()) + 1 + "");
+                clearM();
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "من فضلك ادخل البيانات بالحقول للاضافة...");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Login");
+            alert.setHeaderText("Information Dialog");
+            alert.setContentText("Please enter data in the fields to add...");
+            alert.showAndWait();
         }
 
     }
@@ -164,12 +185,17 @@ public class MainMenuController implements Initializable {
                 //to show the new Drink that i just added ObservableList
                 listD.add(new Drinks(num, name, type, cost));
 
-                doneD.setText("تمت عملية الاضافة");
+                doneD.setText("Successfully added");
                 doneD.setVisible(true);
                 numDrinks.setText(Integer.parseInt(numDrinks.getText()) + 1 + "");
+                clearD();
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "من فضلك ادخل البيانات بالحقول للاضافة...");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Login");
+            alert.setHeaderText("Information Dialog");
+            alert.setContentText("Please enter data in the fields to add...");
+            alert.showAndWait();
         }
 
     }
@@ -178,6 +204,7 @@ public class MainMenuController implements Initializable {
     //getSelected to return the index of item which i clicked in the table (every row have an index)
     public void getSelectedMeals() {
 
+        numM.setDisable(true);
         indexM = tableM.getSelectionModel().getSelectedIndex();
 
         //because if there not any row ( there is no exist for -1 )
@@ -207,18 +234,24 @@ public class MainMenuController implements Initializable {
                 //to show what i just have updated in the table and put the new data
                 listM.set(indexM, new Meals(listM.get(indexM).getId(), name, type, cost));
 
-                doneM.setText("تمت عملية التعديل");
+                doneM.setText("Successfully edited");
                 doneM.setVisible(true);
                 clearM();
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "من فضلك اختر حقل من الحقول للتعديل...");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Login");
+            alert.setHeaderText("Information Dialog");
+            alert.setContentText("Please select a field to edit...");
+            alert.showAndWait();
         }
 
 
     }
 
     public void clearM() {
+        numM.setDisable(false);
+        numM.setEditable(true);
         numM.clear();
         nameM.clear();
         typeM.getSelectionModel().select(-1); //-1 => for default ( ...اختر)
@@ -228,6 +261,7 @@ public class MainMenuController implements Initializable {
 
     public void getSelectedDrinks() {
 
+        numD.setDisable(true);
         indexD = tableD.getSelectionModel().getSelectedIndex();
 
         //because if there not any row ( there is no exist for -1 )
@@ -257,18 +291,24 @@ public class MainMenuController implements Initializable {
                 //to show what i just have updated in the table and put the new data
                 listD.set(indexD, new Drinks(listD.get(indexD).getId(), name, type, cost));
 
-                doneD.setText("تمت عملية التعديل");
+                doneD.setText("Successfully edited");
                 doneD.setVisible(true);
                 clearD();
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "من فضلك اختر حقل من الحقول للتعديل...");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Login");
+            alert.setHeaderText("Information Dialog");
+            alert.setContentText("Please select a field to edit...");
+            alert.showAndWait();
         }
 
 
     }
 
     public void clearD() {
+        numD.setDisable(false);
+        numD.setEditable(true);
         numD.clear();
         nameD.clear();
         typeD.getSelectionModel().select(-1); //-1 => for default ( ...اختر)
@@ -282,7 +322,7 @@ public class MainMenuController implements Initializable {
 
         if (DB.delete("Meals", "numM =" + numCM.getCellData(indexM))) {
             listM.remove(indexM);
-            doneM.setText("تمت عملية الحذف");
+            doneM.setText("Successfully Deleted");
             doneM.setVisible(true);
             numMeals.setText(Integer.parseInt(numMeals.getText()) - 1 + "");
             indexM = -1;
@@ -297,7 +337,7 @@ public class MainMenuController implements Initializable {
 
         if (DB.delete("Drinks", "numD =" + numCD.getCellData(indexD))) {
             listD.remove(indexD);
-            doneD.setText("تمت عملية الحذف");
+            doneD.setText("Successfully Deleted");
             doneD.setVisible(true);
             numDrinks.setText(Integer.parseInt(numDrinks.getText()) - 1 + "");
             indexD = -1;
@@ -382,7 +422,7 @@ public class MainMenuController implements Initializable {
             //or children in Node
             Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
             stage.setScene(scene);
-            stage.setTitle("تسجيل الدخول");
+            stage.setTitle("Login");
 
             //to open the MenuMain window in the center
             Rectangle2D rd = Screen.getPrimary().getBounds();
@@ -395,7 +435,7 @@ public class MainMenuController implements Initializable {
     }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL url, ResourceBundle rb) {
         //get the data from class Meals
         numCM.setCellValueFactory(new PropertyValueFactory<Meals, Integer>("id"));
         nameCM.setCellValueFactory(new PropertyValueFactory<Meals, String>("name"));
@@ -420,11 +460,13 @@ public class MainMenuController implements Initializable {
         numDrinks.setText(DB.count("numD", "Drinks") + "");
         numMeals.setText(DB.count("numM", "Meals") + "");
 
-        ObservableList<String> listM = FXCollections.observableArrayList("أسماك", "مشاوي", "لحوم", "وجبات سريعة");
+        ObservableList<String> listM = FXCollections.observableArrayList("Breakfast", "Burgers", "Happy Meal", "Fries & Sides");
         typeM.setItems(listM);
 
-        ObservableList<String> listD = FXCollections.observableArrayList("بارد", "دافئ");
+        ObservableList<String> listD = FXCollections.observableArrayList("MilkShake", "Soda MIX", "Smoothies", "Sunday", "Hot Milky", "Coffee");
         typeD.setItems(listD);
 
+        // TODO
     }
+
 }
