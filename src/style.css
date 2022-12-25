@@ -2,14 +2,19 @@
 #loginLayout{
 -fx-background-position: center;
 -fx-background-image: url(back.jpg);
-
-
+-fx-background-size:100%;
 }
 #loginLayout TextField,
 #loginLayout PasswordField{
     -fx-background-radius:10px;
 }
 
+//login
+#login{
+    -fx-border-width:10px;
+    -fx-border-color:#c5b358;
+    -fx-background-color:transparent;
+}
 //MainMenu
 #slideRight{
     -fx-background-color:#333;
@@ -28,8 +33,10 @@
 #Meals{
 -fx-background-position: center;
 -fx-background-image: url(MealsBack.jpg);
+-fx-background-size:100%;
 }
 #Drinks{
 -fx-background-position: center;
 -fx-background-image: url(DrinksBack.jpg);
+-fx-background-size:100%;
 }

@@ -82,40 +82,50 @@
             </HBox>
          </children>
       </VBox>
-      <Pane id="Meals" fx:id="Meals" layoutX="876.0" layoutY="93.0" prefHeight="200.0" prefWidth="1066.0" style="-fx-background-color: #e1efa4;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="227.0" AnchorPane.topAnchor="93.0">
+      <Pane id="Meals" fx:id="Meals" layoutX="876.0" layoutY="93.0" prefHeight="200.0" prefWidth="1066.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="227.0" AnchorPane.topAnchor="93.0">
          <children>
-            <Label layoutX="1524.0" layoutY="191.0" text="Meal ID">
+            <Label layoutX="1524.0" layoutY="101.0" text="Meal ID" textFill="WHITE">
                <font>
                   <Font name="Consolas Bold" size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="numM" alignment="CENTER" layoutX="1344.0" layoutY="183.0" prefHeight="34.0" prefWidth="163.0">
+            <TextField fx:id="numM" alignment="CENTER" layoutX="1344.0" layoutY="93.0" prefHeight="34.0" prefWidth="163.0">
                <font>
                   <Font name="Consolas Bold" size="15.0" />
                </font>
             </TextField>
-            <Label layoutX="1525.0" layoutY="233.0" text="Meal name">
+            <Label layoutX="1525.0" layoutY="143.0" text="Meal name" textFill="WHITE">
                <font>
                   <Font name="Consolas Bold" size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="nameM" alignment="CENTER" layoutX="1344.0" layoutY="225.0" prefHeight="34.0" prefWidth="163.0">
+            <TextField fx:id="nameM" alignment="CENTER" layoutX="1344.0" layoutY="135.0" prefHeight="34.0" prefWidth="163.0">
                <font>
                   <Font name="Consolas Bold" size="15.0" />
                </font>
             </TextField>
-            <Label layoutX="1526.0" layoutY="283.0" text="Meal kind">
+            <Label layoutX="1526.0" layoutY="193.0" text="Meal kind" textFill="WHITE">
                <font>
                   <Font name="Consolas Bold" size="15.0" />
                </font>
             </Label>
-            <ComboBox fx:id="typeM" layoutX="1344.0" layoutY="272.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="163.0" promptText="Choose" />
-            <Label layoutX="1526.0" layoutY="328.0" text="Meal price">
+            <ComboBox fx:id="typeM" layoutX="1344.0" layoutY="182.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="163.0" promptText="Choose" />
+            <Label layoutX="1526.0" layoutY="238.0" text="Meal price" textFill="WHITE">
                <font>
                   <Font name="Consolas Bold" size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="costM" alignment="CENTER" layoutX="1344.0" layoutY="320.0" prefHeight="34.0" prefWidth="163.0">
+            <TextField fx:id="costM" alignment="CENTER" layoutX="1344.0" layoutY="230.0" prefHeight="34.0" prefWidth="163.0">
+               <font>
+                  <Font name="Consolas Bold" size="15.0" />
+               </font>
+            </TextField>
+            <Label layoutX="1524.0" layoutY="286.0" text="Meal count" textFill="WHITE">
+               <font>
+                  <Font name="Consolas Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="countM" alignment="CENTER" layoutX="1343.0" layoutY="277.0" prefHeight="34.0" prefWidth="163.0">
                <font>
                   <Font name="Consolas Bold" size="15.0" />
                </font>
@@ -125,7 +135,8 @@
                   <TableColumn fx:id="numCM" prefWidth="75.0" text="Meal ID" />
                   <TableColumn fx:id="nameCM" prefWidth="75.0" text="Meal Name" />
                   <TableColumn fx:id="typeCM" prefWidth="75.0" text="Meal Kind" />
-                  <TableColumn fx:id="costCM" prefWidth="75.0" text="Meal price" />
+                  <TableColumn fx:id="costCM" prefWidth="75.0" text="Meal Price" />
+                  <TableColumn fx:id="countCM" prefWidth="75.0" text="Count Meal" />
                </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -171,40 +182,50 @@
             <Reflection />
          </effect>
       </Pane>
-      <Pane id="Drinks" fx:id="Drinks" layoutY="93.0" prefHeight="927.0" prefWidth="1693.0" style="-fx-background-color: #8199cf;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="227.0" AnchorPane.topAnchor="93.0">
+      <Pane id="Drinks" fx:id="Drinks" layoutY="93.0" prefHeight="927.0" prefWidth="1693.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="227.0" AnchorPane.topAnchor="93.0">
          <children>
-            <Label layoutX="1508.0" layoutY="210.0" text="Drink ID">
+            <Label layoutX="1508.0" layoutY="110.0" text="Drink ID" textFill="WHITE">
                <font>
                   <Font name="Consolas Bold" size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="numD" alignment="CENTER" layoutX="1325.0" layoutY="199.0" prefHeight="34.0" prefWidth="163.0">
+            <TextField fx:id="numD" alignment="CENTER" layoutX="1325.0" layoutY="99.0" prefHeight="34.0" prefWidth="163.0">
                <font>
                   <Font name="Consolas Bold" size="15.0" />
                </font>
             </TextField>
-            <Label layoutX="1508.0" layoutY="252.0" text="Drink Name">
+            <Label layoutX="1508.0" layoutY="152.0" text="Drink Name" textFill="WHITE">
                <font>
                   <Font name="Consolas Bold" size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="nameD" alignment="CENTER" layoutX="1325.0" layoutY="244.0" prefHeight="34.0" prefWidth="163.0">
+            <TextField fx:id="nameD" alignment="CENTER" layoutX="1325.0" layoutY="144.0" prefHeight="34.0" prefWidth="163.0">
                <font>
                   <Font name="Consolas Bold" size="15.0" />
                </font>
             </TextField>
-            <Label layoutX="1508.0" layoutY="299.0" text="Drink Kind">
+            <Label layoutX="1508.0" layoutY="199.0" text="Drink Kind" textFill="WHITE">
                <font>
                   <Font name="Consolas Bold" size="15.0" />
                </font>
             </Label>
-            <ComboBox fx:id="typeD" layoutX="1325.0" layoutY="288.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="163.0" promptText="Choose" />
-            <Label layoutX="1507.0" layoutY="350.0" text="Drink Price">
+            <ComboBox fx:id="typeD" layoutX="1325.0" layoutY="188.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="163.0" promptText="Choose" />
+            <Label layoutX="1506.0" layoutY="250.0" text="Drink Price" textFill="WHITE">
                <font>
                   <Font name="Consolas Bold" size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="costD" alignment="CENTER" layoutX="1325.0" layoutY="342.0" prefHeight="34.0" prefWidth="163.0">
+            <TextField fx:id="costD" alignment="CENTER" layoutX="1325.0" layoutY="242.0" prefHeight="34.0" prefWidth="163.0">
+               <font>
+                  <Font name="Consolas Bold" size="15.0" />
+               </font>
+            </TextField>
+            <Label layoutX="1506.0" layoutY="298.0" text="Drink Count" textFill="WHITE">
+               <font>
+                  <Font name="Consolas Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="countD" alignment="CENTER" layoutX="1325.0" layoutY="292.0" prefHeight="34.0" prefWidth="163.0">
                <font>
                   <Font name="Consolas Bold" size="15.0" />
                </font>
@@ -215,6 +236,7 @@
                   <TableColumn fx:id="nameCD" prefWidth="75.0" text="Drink Name" />
                   <TableColumn fx:id="typeCD" prefWidth="75.0" text="Drink Kind" />
                   <TableColumn fx:id="costCD" prefWidth="75.0" text="Drink Price" />
+                  <TableColumn fx:id="countCD" prefWidth="75.0" text="Count Drinks" />
                </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -256,6 +278,9 @@
                </font>
             </Label>
          </children>
+         <effect>
+            <Reflection />
+         </effect>
       </Pane>
    </children>
 </AnchorPane>

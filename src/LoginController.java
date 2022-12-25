@@ -47,10 +47,6 @@ public class LoginController implements Initializable {
     TextField username;
     @FXML
     PasswordField password;
-    @FXML
-    TextField newN;
-    @FXML
-    PasswordField newP;
 
     /*
     public void login(Event e) {

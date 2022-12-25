@@ -50,16 +50,16 @@ public class DB {
     }
 
     //insert function
-    public static boolean insert(String table, int id, String name, String type, int cost) {
+    public static boolean insert(String table, int id, String name, String type, int cost, int count) {
         PreparedStatement ps = null;
         String sql = "";
         Connection con = connect();
 
         try {
             if (table.equals("Meals")) {
-                sql = "insert into " + table + "([numM], [nameM], [typeM], [costM]) Values (" + id + ", '" + name + "', '" + type + "', " + cost + ")";
+                sql = "insert into " + table + "([numM], [nameM], [typeM], [costM], [countM]) Values (" + id + ", '" + name + "', '" + type + "', " + cost + ", " + count + ")";
             } else {
-                sql = "insert into " + table + "([numD], [nameD], [typeD], [costD]) Values (" + id + ", '" + name + "', '" + type + "', " + cost + ")";
+                sql = "insert into " + table + "([numD], [nameD], [typeD], [costD], [countD]) Values (" + id + ", '" + name + "', '" + type + "', " + cost + ", " + count + ")";
             }
             ps = con.prepareStatement(sql);
 
@@ -101,7 +101,7 @@ public class DB {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                list.add(new Drinks(rs.getInt("numD"), rs.getString("nameD"), rs.getString("typeD"), rs.getInt("costD")));
+                list.add(new Drinks(rs.getInt("numD"), rs.getString("nameD"), rs.getString("typeD"), rs.getInt("costD"),rs.getInt("countD")));
             }
 
         } catch (Exception e) {
@@ -125,7 +125,7 @@ public class DB {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                list.add(new Meals(rs.getInt("numM"), rs.getString("nameM"), rs.getString("typeM"), rs.getInt("costM")));
+                list.add(new Meals(rs.getInt("numM"), rs.getString("nameM"), rs.getString("typeM"), rs.getInt("costM"), rs.getInt("countM")));
             }
 
         } catch (Exception e) {
@@ -140,14 +140,14 @@ public class DB {
         return list;
     }
 
-    public static boolean update(String table, String where, String name, String type, int cost) {
+    public static boolean update(String table, String where, String name, String type, int cost, int count) {
 
         Connection con = connect();
         String sql;
         if (table.equals("Drinks")) {
-            sql = "update " + table + " set nameD ='" + name + "' ,typeD ='" + type + "' ,costD =" + cost + " " + where;
+            sql = "update " + table + " set nameD ='" + name + "' ,typeD ='" + type + "' ,costD =" + cost + " ,countD =" + count + " " + where;
         } else {
-            sql = "update " + table + " set nameM ='" + name + "' ,typeM ='" + type + "' ,costM =" + cost + " " + where;
+            sql = "update " + table + " set nameM ='" + name + "' ,typeM ='" + type + "' ,costM =" + cost + " ,countM =" + count + " " + where;
         }
         try {
 

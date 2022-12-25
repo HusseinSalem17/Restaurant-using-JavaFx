@@ -1,12 +1,21 @@
 public class Meals {
-    int id, cost;
+    int id, cost,count;
     String name, type;
 
-    public Meals(int id, String name, String type, int cost) {
+    public Meals(int id, String name, String type, int cost,int count) {
         this.id = id;
         this.name = name;
         this.type = type;
         this.cost = cost;
+        this.count=count;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 
     public void setId(int id) {

@@ -58,6 +58,8 @@ public class MainMenuController implements Initializable {
     @FXML
     TextField costM;
     @FXML
+    TextField countM;
+    @FXML
     Label doneM;
 
     @FXML
@@ -70,6 +72,8 @@ public class MainMenuController implements Initializable {
     TableColumn<Meals, String> typeCM;
     @FXML
     TableColumn<Meals, Integer> costCM;
+    @FXML
+    TableColumn<Meals, Integer> countCM;
     //Drinks table ID
     @FXML
     TextField numD;
@@ -79,6 +83,8 @@ public class MainMenuController implements Initializable {
     ComboBox<String> typeD;
     @FXML
     TextField costD;
+    @FXML
+    TextField countD;
     @FXML
     Label doneD;
 
@@ -92,6 +98,8 @@ public class MainMenuController implements Initializable {
     TableColumn<Drinks, String> typeCD;
     @FXML
     TableColumn<Drinks, Integer> costCD;
+    @FXML
+    TableColumn<Drinks, Integer> countCD;
 
     @FXML
     ObservableList<Meals> listM;
@@ -149,11 +157,12 @@ public class MainMenuController implements Initializable {
             String name = nameM.getText();
             String type = typeM.getValue().toString();
             int cost = Integer.parseInt(costM.getText());
+            int count = Integer.parseInt(countM.getText());
 
             //because it return false if didn't insert or updated
-            if (!DB.insert("Meals", num, name, type, cost)) {
+            if (!DB.insert("Meals", num, name, type, cost, count)) {
                 //to show the new Meal that i just added from ObservableList
-                listM.add(new Meals(num, name, type, cost));
+                listM.add(new Meals(num, name, type, cost, count));
 
                 doneM.setText("Successfully added");
                 doneM.setVisible(true);
@@ -177,13 +186,14 @@ public class MainMenuController implements Initializable {
         try {
             int num = Integer.parseInt(numD.getText());
             String name = nameD.getText();
-            String type = typeD.getValue().toString();
+            String type = typeD.getValue();
             int cost = Integer.parseInt(costD.getText());
+            int count = Integer.parseInt(countD.getText());
 
             //because it return false if didn't insert or updated
-            if (!DB.insert("Drinks", num, name, type, cost)) {
+            if (!DB.insert("Drinks", num, name, type, cost, count)) {
                 //to show the new Drink that i just added ObservableList
-                listD.add(new Drinks(num, name, type, cost));
+                listD.add(new Drinks(num, name, type, cost, count));
 
                 doneD.setText("Successfully added");
                 doneD.setVisible(true);
@@ -218,6 +228,7 @@ public class MainMenuController implements Initializable {
         //get the typeCM and put it in the typeM
         typeM.getSelectionModel().select(typeCM.getCellData(indexM));
         costM.setText(costCM.getCellData(indexM).toString());
+        countM.setText(countCM.getCellData(indexM).toString());
     }
 
     //to updateMeals
@@ -228,11 +239,12 @@ public class MainMenuController implements Initializable {
             String name = nameM.getText();
             String type = typeM.getValue().toString();
             int cost = Integer.parseInt(costM.getText());
+            int count = Integer.parseInt(countM.getText());
 
 
-            if (DB.update("Meals", "where numM = " + num, name, type, cost)) {
+            if (DB.update("Meals", "where numM = " + num, name, type, cost, count)) {
                 //to show what i just have updated in the table and put the new data
-                listM.set(indexM, new Meals(listM.get(indexM).getId(), name, type, cost));
+                listM.set(indexM, new Meals(listM.get(indexM).getId(), name, type, cost, count));
 
                 doneM.setText("Successfully edited");
                 doneM.setVisible(true);
@@ -256,6 +268,7 @@ public class MainMenuController implements Initializable {
         nameM.clear();
         typeM.getSelectionModel().select(-1); //-1 => for default ( ...اختر)
         costM.clear();
+        countM.clear();
 
     }
 
@@ -275,6 +288,7 @@ public class MainMenuController implements Initializable {
         //get the typeCM and put it in the typeM
         typeD.getSelectionModel().select(typeCD.getCellData(indexD));
         costD.setText(costCD.getCellData(indexD).toString());
+        countD.setText(countCD.getCellData(indexD).toString());
     }
 
     //to updateMeals
@@ -285,11 +299,12 @@ public class MainMenuController implements Initializable {
             String name = nameD.getText();
             String type = typeD.getValue().toString();
             int cost = Integer.parseInt(costD.getText());
+            int count = Integer.parseInt(countD.getText());
 
 
-            if (DB.update("Drinks", "where numD = " + num, name, type, cost)) {
+            if (DB.update("Drinks", "where numD = " + num, name, type, cost, count)) {
                 //to show what i just have updated in the table and put the new data
-                listD.set(indexD, new Drinks(listD.get(indexD).getId(), name, type, cost));
+                listD.set(indexD, new Drinks(listD.get(indexD).getId(), name, type, cost, count));
 
                 doneD.setText("Successfully edited");
                 doneD.setVisible(true);
@@ -313,6 +328,7 @@ public class MainMenuController implements Initializable {
         nameD.clear();
         typeD.getSelectionModel().select(-1); //-1 => for default ( ...اختر)
         costD.clear();
+        countD.clear();
     }
 
     public void deleteMeals() {
@@ -441,12 +457,15 @@ public class MainMenuController implements Initializable {
         nameCM.setCellValueFactory(new PropertyValueFactory<Meals, String>("name"));
         typeCM.setCellValueFactory(new PropertyValueFactory<Meals, String>("type"));
         costCM.setCellValueFactory(new PropertyValueFactory<Meals, Integer>("cost"));
+        countCM.setCellValueFactory(new PropertyValueFactory<Meals, Integer>("count"));
 
         //get the data from class Drinks
         numCD.setCellValueFactory(new PropertyValueFactory<Drinks, Integer>("id"));
         nameCD.setCellValueFactory(new PropertyValueFactory<Drinks, String>("name"));
         typeCD.setCellValueFactory(new PropertyValueFactory<Drinks, String>("type"));
         costCD.setCellValueFactory(new PropertyValueFactory<Drinks, Integer>("cost"));
+        countCD.setCellValueFactory(new PropertyValueFactory<Drinks, Integer>("count"));
+
 
         //to show the data which i got from the class Meals in the table
         listM = DB.getMeals();
